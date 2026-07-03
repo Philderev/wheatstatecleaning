@@ -228,6 +228,22 @@
     });
   });
 
+  /* ---- Scroll reveal: sections fade + rise as they enter view ---- */
+  var revealEls = document.querySelectorAll(".frame > section, .frame > .quote-wrap, .frame > footer");
+  if ("IntersectionObserver" in window && revealEls.length) {
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+    Array.prototype.forEach.call(revealEls, function (el) { revealObs.observe(el); });
+  } else {
+    Array.prototype.forEach.call(revealEls, function (el) { el.classList.add("is-visible"); });
+  }
+
   /* ---- Quote popup modal: opened by any non-call CTA ---- */
   var quoteModal = document.getElementById("quoteModal");
   if (quoteModal) {

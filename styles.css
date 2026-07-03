@@ -63,6 +63,24 @@
 
 * { box-sizing: border-box; }
 
+/* scroll reveal — sections fade + rise into view (only when JS is on) */
+.js .frame > section,
+.js .frame > .quote-wrap,
+.js .frame > footer {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+.js .frame > .is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .frame > section,
+  .js .frame > .quote-wrap,
+  .js .frame > footer { opacity: 1; transform: none; transition: none; }
+}
+
 /* full-width background photo — starts at the top, fades out mid-services */
 .page-bg {
   position: absolute;
@@ -1872,7 +1890,14 @@ body.modal-open { overflow: hidden; }
 
 @media (max-width: 720px) {
   .frame { margin: 12px; border-radius: 22px; }
-  .hero { border-radius: 22px 22px 0 0; min-height: 560px; }
+  .hero {
+    border-radius: 22px 22px 0 0;
+    min-height: 560px;
+    /* hero background photo on mobile */
+    background:
+      linear-gradient(180deg, rgba(242,241,238,.55), rgba(242,241,238,.35)),
+      url("images/house-cleaning-service.jpeg") center / cover no-repeat;
+  }
   .nav-right .nav-phone { display: none; }
 
   /* hamburger centered in the header */
