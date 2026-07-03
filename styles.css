@@ -1753,9 +1753,9 @@ body.modal-open { overflow: hidden; }
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 2rem;
 }
-.footer .brand { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1rem; }
-.footer .brand img { height: 38px; width: auto; display: block; }
-.footer .brand .brand-name { font-size: 1rem; }
+.footer .brand { display: inline-flex; align-items: center; gap: .2rem; margin-bottom: 1rem; }
+.footer .brand img { height: 84px; width: auto; display: block; }
+.footer .brand .brand-name { font-size: 1rem; color: #004aad; margin-left: -.5rem; }
 .footer .blurb { color: var(--muted); font-size: .9rem; max-width: 30ch; }
 .footer h4 {
   font-size: .72rem;
