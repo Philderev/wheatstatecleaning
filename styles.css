@@ -274,7 +274,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
   z-index: 1;
   width: 100%;
   max-width: 480px;
-  max-height: 90vh;
+  max-height: 94vh;
   background: #fff;
   border-radius: 16px;
   box-shadow: var(--shadow-pop);
@@ -285,10 +285,19 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
   from { opacity: 0; transform: translateY(12px) scale(.98); }
   to   { opacity: 1; transform: none; }
 }
-.quote-modal__dialog iframe {
-  width: 100%;
-  height: 600px;
-  max-height: 90vh;
+/* clipping frame + zoomed-out (0.8) form so the whole thing fits, no scrollbar */
+.quote-modal__frame {
+  overflow: hidden;
+  height: 525px;
+  max-height: 94vh;
+  border-radius: 16px;
+}
+.quote-modal__frame iframe {
+  width: 125%;              /* 1 / 0.8 → scales back to full width */
+  height: 875px;           /* 700 / 0.8 → scales back to the frame height */
+  transform: scale(0.8);
+  transform-origin: top left;
+  margin-right: -25%;
   border: 0;
   display: block;
 }
