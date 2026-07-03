@@ -227,4 +227,46 @@
       window.location.href = "pages/thank-you.html";
     });
   });
+
+  /* ---- Quote popup modal: opened by any non-call CTA ---- */
+  var quoteModal = document.getElementById("quoteModal");
+  if (quoteModal) {
+    var modalIframe = quoteModal.querySelector("iframe");
+    var lastFocused = null;
+
+    function openQuoteModal() {
+      lastFocused = document.activeElement;
+      // lazy-load the form the first time the modal opens
+      if (modalIframe && !modalIframe.src && modalIframe.dataset.src) {
+        modalIframe.src = modalIframe.dataset.src;
+      }
+      quoteModal.classList.add("is-open");
+      quoteModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      var closeBtn = quoteModal.querySelector(".quote-modal__close");
+      if (closeBtn) closeBtn.focus();
+    }
+    function closeQuoteModal() {
+      quoteModal.classList.remove("is-open");
+      quoteModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    // any same-page "quote" CTA (not tel: calls) opens the modal
+    document.addEventListener("click", function (e) {
+      var trigger = e.target.closest('a[href="#quote"], .quote-cta, [data-quote-modal]');
+      if (trigger) {
+        e.preventDefault();
+        openQuoteModal();
+        return;
+      }
+      if (e.target.closest("[data-close-modal]")) {
+        closeQuoteModal();
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && quoteModal.classList.contains("is-open")) closeQuoteModal();
+    });
+  }
 })();
