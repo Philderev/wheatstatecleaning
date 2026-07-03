@@ -11,21 +11,21 @@
   <meta name="geo.region" content="US-KS" />
   <meta name="geo.placename" content="Lawrence" />
   <meta name="theme-color" content="#1B2A4A" />
-  <link rel="canonical" href="https://philderev.github.io/wheatstatecleaning/" />
+  <link rel="canonical" href="https://wheatstatecleaning.com/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Wheat State Cleaning" />
   <meta property="og:title" content="Wheat State Cleaning — Lawrence, KS House Cleaning" />
   <meta property="og:description" content="Lawrence's top-rated residential cleaning service. Trusted, vetted house cleaners serving Lawrence, Topeka, Olathe, Overland Park, Kansas City, and Lenexa, KS." />
-  <meta property="og:url" content="https://philderev.github.io/wheatstatecleaning/" />
-  <meta property="og:image" content="https://philderev.github.io/wheatstatecleaning/icons/logol.png" />
+  <meta property="og:url" content="https://wheatstatecleaning.com/" />
+  <meta property="og:image" content="https://wheatstatecleaning.com/icons/logol.png" />
   <meta property="og:image:alt" content="Wheat State Cleaning logo" />
   <meta property="og:locale" content="en_US" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Wheat State Cleaning — Lawrence, KS House Cleaning" />
   <meta name="twitter:description" content="Trusted, vetted house cleaners serving Lawrence and surrounding Kansas communities. 100% satisfaction guaranteed and no contracts." />
-  <meta name="twitter:image" content="https://philderev.github.io/wheatstatecleaning/icons/logol.png" />
+  <meta name="twitter:image" content="https://wheatstatecleaning.com/icons/logol.png" />
 
   <script type="application/ld+json">
   {
@@ -33,14 +33,16 @@
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://philderev.github.io/wheatstatecleaning/#business",
+        "@id": "https://wheatstatecleaning.com/#business",
         "name": "Wheat State Cleaning",
-        "url": "https://philderev.github.io/wheatstatecleaning/",
-        "logo": "https://philderev.github.io/wheatstatecleaning/icons/logol.png",
-        "image": "https://philderev.github.io/wheatstatecleaning/images/house-cleaning-service.jpeg",
+        "url": "https://wheatstatecleaning.com/",
+        "logo": "https://wheatstatecleaning.com/icons/logol.png",
+        "image": "https://wheatstatecleaning.com/images/house-cleaning-service.jpeg",
         "telephone": "+1-785-592-3337",
         "description": "Wheat State Cleaning is a top-rated residential cleaning service serving Lawrence, Topeka, Olathe, Overland Park, Kansas City, and Lenexa, Kansas.",
         "priceRange": "$$",
+        "paymentAccepted": "Credit Card",
+        "knowsAbout": ["House Cleaning", "Deep Cleaning", "Move-Out Cleaning", "Maid Service"],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Lawrence",
@@ -86,7 +88,7 @@
       },
       {
         "@type": "FAQPage",
-        "@id": "https://philderev.github.io/wheatstatecleaning/#faq-schema",
+        "@id": "https://wheatstatecleaning.com/#faq-schema",
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,6 +104,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Fill out the online quote form or call (785) 592-3337. Wheat State Cleaning responds fast, confirms your price, and schedules your clean."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does a Lawrence deep clean include?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Lawrence deep clean includes detailing baseboards, door frames, trim, kitchen window tracks, appliance interiors and exteriors, bathroom grout and fixtures, ceiling fans, light fixtures, vacuuming, edging, and deep mopping hard floors."
             }
           },
           {
@@ -166,10 +176,29 @@
       </button>
 
       <ul class="nav-links" id="nav-links">
-        <li><a href="#quote">Services</a></li>
-        <li><a href="#pricing">Pricing</a></li>
+        <li class="has-dropdown">
+          <a href="#quote">Services</a>
+          <ul class="nav-dropdown">
+            <li><a href="services/recurring-cleaning.html">Recurring Cleaning</a></li>
+            <li><a href="services/deep-cleaning.html">Deep Cleaning</a></li>
+            <li><a href="services/move-in-out.html">Move-In / Move-Out</a></li>
+            <li><a href="services/post-construction.html">Post-Construction</a></li>
+            <li><a href="services/special-event.html">Special Event</a></li>
+          </ul>
+        </li>
+        <li><a href="pricing.html">Pricing</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#areas">Service Areas</a></li>
+        <li class="has-dropdown">
+          <a href="#areas">Service Areas</a>
+          <ul class="nav-dropdown">
+            <li><a href="service-area/lawrence-ks.html">Lawrence, KS</a></li>
+            <li><a href="service-area/topeka-ks.html">Topeka, KS</a></li>
+            <li><a href="service-area/olathe-ks.html">Olathe, KS</a></li>
+            <li><a href="service-area/overland-park-ks.html">Overland Park, KS</a></li>
+            <li><a href="service-area/kansas-city-ks.html">Kansas City, KS</a></li>
+            <li><a href="service-area/lenexa-ks.html">Lenexa, KS</a></li>
+          </ul>
+        </li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
 
@@ -202,15 +231,15 @@
         </ul>
 
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="tel:+17855923337">Call Now <span class="arw">→</span></a>
-          <a class="btn btn-outline btn-lg" href="#quote">Easy Quote</a>
-          <a class="explore-link" href="#pricing">Explore Plans <span class="arw">→</span></a>
+          <a class="btn btn-primary btn-lg" href="#quote">Get a Free Quote <span class="arw">→</span></a>
+          <a class="btn btn-outline btn-lg" href="services/deep-cleaning.html#home-reset-checklist">See Our Checklist</a>
         </div>
         <p class="hero-hours">Mon–Fri 7:30am–8pm · Sat–Sun 8:30am–5pm · (785) 592-3337</p>
 
         <div class="hero-badges">
           <span class="badge"><span class="stars">★★★★★</span> 4.9 · 100+ Google Reviews</span>
           <span class="badge"><span class="dot" aria-hidden="true"></span>BBB A+ Accredited</span>
+          <span class="badge"><span class="dot" aria-hidden="true"></span>Top-Rated on Thumbtack</span>
           <span class="badge"><span class="dot" aria-hidden="true"></span>Fully Insured &amp; Vetted Providers</span>
         </div>
       </div>
@@ -677,6 +706,7 @@
       <div class="faq-list">
         <details class="faq-item"><summary>How much does house cleaning cost in Lawrence, KS?</summary><div class="answer">House cleaning in Lawrence, KS starts at $169 per visit for weekly recurring service, $189 per visit for biweekly, and $218 per visit for monthly. One-time deep cleans and move-out cleans are priced based on home size. Call (785) 592-3337 for a custom quote in minutes.</div></details>
         <details class="faq-item"><summary>What is the difference between a standard clean and a deep clean?</summary><div class="answer">A standard clean covers routine maintenance — vacuuming, mopping, wiping surfaces, cleaning bathrooms, and tidying kitchens. A deep clean goes further: baseboards, ceiling fans, grout lines, inside appliances, window sills, and hard-to-reach areas. Most new clients start with a deep clean, then switch to recurring standard cleans.</div></details>
+        <details class="faq-item"><summary>What does a Lawrence deep clean include?</summary><div class="answer">Our signature Home Reset deep clean includes detailing and hand-wiping baseboards, door frames, and trim; deep-cleaning kitchen window tracks and sill areas; scrubbing and degreasing exterior and interior major appliances; sanitizing bathroom tile grout, shower surrounds, and fixtures; wall-to-wall dusting including ceiling fans and light fixtures; and vacuuming, edging, and deep mopping hard flooring surfaces.</div></details>
         <details class="faq-item"><summary>How do I book a house cleaning in Lawrence, KS?</summary><div class="answer">Fill out the online quote form or call (785) 592-3337. We respond fast, confirm your price, and schedule your clean — no lengthy phone calls required. Most clients get a price and book in under 5 minutes.</div></details>
         <details class="faq-item"><summary>Are your cleaners insured and background checked?</summary><div class="answer">Yes. Every provider in the Wheat State Cleaning network is fully insured and passes a comprehensive criminal background check before entering any home. Providers are also regularly performance-vetted, and we are BBB A+ Accredited.</div></details>
         <details class="faq-item"><summary>How does your referral agency model work?</summary><div class="answer">We vet the top independent cleaning professionals across Kansas and Missouri and match them to your job — handling the logistics, quality guarantees, and customer support so you get a trusted local provider without the hassle of finding one yourself.</div></details>
@@ -932,7 +962,7 @@
           </ul>
         </div>
         <div class="cta-col">
-          <a class="btn btn-primary btn-lg" href="pages/careers.html">Apply Now — We Are Hiring <span class="arw">→</span></a>
+          <a class="btn btn-primary btn-lg" href="careers.html">Apply Now — We Are Hiring <span class="arw">→</span></a>
         </div>
       </div>
     </section>
@@ -967,35 +997,36 @@
         <div>
           <h4>Service Areas</h4>
           <ul>
-            <li><a href="#areas-lawrence">Lawrence, KS</a></li>
-            <li><a href="#areas-topeka">Topeka, KS</a></li>
-            <li><a href="#areas-olathe">Olathe, KS</a></li>
-            <li><a href="#areas-overland-park">Overland Park, KS</a></li>
-            <li><a href="#areas-kansas-city">Kansas City, KS</a></li>
-            <li><a href="#areas-lenexa">Lenexa, KS</a></li>
+            <li><a href="service-area/lawrence-ks.html">Lawrence, KS</a></li>
+            <li><a href="service-area/topeka-ks.html">Topeka, KS</a></li>
+            <li><a href="service-area/olathe-ks.html">Olathe, KS</a></li>
+            <li><a href="service-area/overland-park-ks.html">Overland Park, KS</a></li>
+            <li><a href="service-area/kansas-city-ks.html">Kansas City, KS</a></li>
+            <li><a href="service-area/lenexa-ks.html">Lenexa, KS</a></li>
           </ul>
         </div>
 
         <div>
           <h4>Services</h4>
           <ul>
-            <li><a href="#quote-recurring">Recurring Cleaning</a></li>
-            <li><a href="#quote-deep-clean">Deep Cleaning</a></li>
-            <li><a href="#quote-move-out">Move-In/Move-Out Cleaning</a></li>
-            <li><a href="#quote-post-construction">Post-Construction Cleaning</a></li>
-            <li><a href="#quote-special-event">Special Event Cleaning</a></li>
+            <li><a href="services/recurring-cleaning.html">Recurring Cleaning</a></li>
+            <li><a href="services/deep-cleaning.html">Deep Cleaning</a></li>
+            <li><a href="services/move-in-out.html">Move-In/Move-Out Cleaning</a></li>
+            <li><a href="services/post-construction.html">Post-Construction Cleaning</a></li>
+            <li><a href="services/special-event.html">Special Event Cleaning</a></li>
           </ul>
         </div>
 
         <div>
           <h4>Company</h4>
           <ul>
+            <li><a href="pricing.html">Pricing</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Reviews</a></li>
-            <li><a href="pages/careers.html">Careers</a></li>
+            <li><a href="careers.html">Careers</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="pages/privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="pages/terms.html">Terms</a></li>
+            <li><a href="legal/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="legal/terms.html">Terms</a></li>
           </ul>
         </div>
       </div>

@@ -11,7 +11,12 @@ A static, single-page site (plus Privacy Policy and Terms pages) built with plai
 | `index.html` | The main landing page |
 | `styles.css` | All styling |
 | `script.js` | Tabs, mobile menu, review/marquee, and other interactions |
-| `pages/` | Privacy Policy and Terms of Service pages |
+| `services/` | Service-specific landing pages |
+| `service-area/` | City/service-area landing pages |
+| `pricing.html` | Pricing page |
+| `careers.html` | Careers page |
+| `thank-you.html` | Form thank-you page |
+| `legal/` | Privacy Policy and Terms pages |
 | `icons/` | Logo and brand icons |
 | `images/` | Photography |
 | `fonts/` | Local SF Pro Display font files |

@@ -349,6 +349,83 @@ body.modal-open { overflow: hidden; }
 .legal a:hover { text-decoration: underline; }
 .legal-back { margin-top: 2.4rem; }
 
+/* service / location subpages — two columns: content left, form right
+   (over the full-page background photo, like the homepage) */
+.subpage-hero {
+  max-width: 1120px;
+  margin: 0 auto clamp(40px, 6vw, 72px);
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+}
+.subpage-hero-inner { text-align: left; }
+/* "Ready to book?" CTA spanning the bottom of the hero */
+.ready-cta {
+  grid-column: 1 / -1;
+  margin-top: clamp(16px, 3vw, 36px);
+  padding: clamp(1.8rem, 4vw, 3rem);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+.ready-cta h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--navy); margin: 0 0 .4rem; }
+.ready-cta p { color: var(--muted); margin: 0 0 1.3rem; }
+.ready-cta-actions { display: flex; justify-content: center; gap: .8rem; flex-wrap: wrap; }
+.ready-call { background: var(--cyan); color: var(--navy); border-color: var(--cyan); }
+.subpage-hero h1 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin: .3rem 0 .6rem;
+  color: var(--navy);
+}
+.subpage-hero h2,
+.subpage-hero h3 {
+  color: var(--navy);
+  font-weight: 800;
+  line-height: 1.15;
+}
+.subpage-hero h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  margin: 1.4rem 0 .7rem;
+}
+.subpage-hero h3 {
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
+  margin: 1.5rem 0 .55rem;
+}
+.subpage-hero .sub { color: var(--muted); font-size: 1.1rem; margin: 0 0 1.2rem; }
+.subpage-hero .subpage-copy { color: #3A3F46; line-height: 1.75; margin: 0 0 1.4rem; }
+.subpage-hero .subpage-copy strong { color: var(--navy); }
+.subpage-hero h4 { font-size: 1rem; font-weight: 800; margin: 1.6rem 0 .6rem; color: var(--navy); }
+.subpage-hero .panel-features { margin: 1rem 0 0; text-align: left; }
+.subpage-hero .panel-pricing { justify-content: flex-start; }
+.subpage-hero .panel-addons { text-align: left; }
+.subpage-hero .coverage-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin: 1.6rem 0 0;
+  font-size: .95rem;
+  color: var(--muted);
+}
+.subpage-hero .coverage-trust strong { color: var(--navy); }
+/* the quote form sits beside the content (right column) */
+.subpage-form {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  padding: clamp(20px, 2.2vw, 28px);
+}
+/* stack to one column on narrower screens */
+@media (max-width: 900px) {
+  .subpage-hero { grid-template-columns: 1fr; }
+}
+/* subpage form reuses the homepage .hero-form-frame zoom/crop (no scrollbar) */
+
 /* careers content page */
 .career-page { max-width: 980px; margin: 0 auto; }
 .career-page h1 {
@@ -558,6 +635,64 @@ body.modal-open { overflow: hidden; }
 }
 .nav-links a:hover { opacity: 1; }
 
+/* nav dropdowns (Services / Service Areas) */
+.nav-links .has-dropdown { position: relative; }
+.nav-links .has-dropdown > a { display: inline-flex; align-items: center; gap: .3rem; }
+.nav-links .has-dropdown > a::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  opacity: .6;
+}
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  transform: translateY(6px);
+  min-width: 230px;
+  list-style: none;
+  margin: 0;
+  padding: .4rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .98);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, .6);
+  box-shadow: 0 16px 40px rgba(20, 24, 31, .16);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .18s ease, transform .18s ease;
+  z-index: 60;
+}
+.nav-dropdown::before {   /* invisible bridge so hover doesn't drop in the gap */
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+.nav-links .has-dropdown:hover .nav-dropdown,
+.nav-links .has-dropdown:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown a {
+  display: block;
+  padding: .6rem .8rem;
+  border-radius: 9px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+  opacity: .85;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { opacity: 1; background: rgba(20, 24, 31, .05); }
+
 /* hamburger toggle — hidden on desktop */
 .nav-toggle {
   display: none;
@@ -647,7 +782,8 @@ body.modal-open { overflow: hidden; }
   /* zoom the embedded form out to 85% (inflate then scale back), and pull
      it up so the empty "forehead" at the top of the form gets cropped */
   width: 153.85%;              /* 100 / 0.65 → scales back to full width */
-  height: 780px;
+  height: 1150px;              /* taller than the form so it never scrolls internally
+                                  (extra space below is cropped by the frame) */
   transform: scale(0.65);
   transform-origin: top left;
   margin-right: -53.85%;
@@ -1695,10 +1831,16 @@ body.modal-open { overflow: hidden; }
   border-radius: var(--r-md);
   overflow: hidden;
   box-shadow: var(--shadow-pop);
+  height: 430px;                /* clip like the hero form so there's no scrollbar */
 }
+/* reuse the hero form's zoom/crop so the whole form fits without scrolling */
 .cost-cta-form iframe {
-  width: 100%;
-  min-height: 700px;
+  width: 153.85%;              /* 100 / 0.65 → scales back to full width */
+  height: 1150px;              /* taller than the form so it never scrolls internally */
+  transform: scale(0.65);
+  transform-origin: top left;
+  margin-right: -53.85%;
+  margin-top: -20px;           /* crop the top whitespace */
   border: 0;
   display: block;
 }
@@ -1874,6 +2016,7 @@ body.modal-open { overflow: hidden; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-body { max-width: none; }
   .hero-form-frame { height: 490px; }
+  .cost-cta-form { height: 490px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .pricing-grid,
   .services-grid,
@@ -1906,6 +2049,8 @@ body.modal-open { overflow: hidden; }
       url("images/house-cleaning-service.jpeg") center / cover no-repeat;
   }
   .nav-right .nav-phone { display: none; }
+  /* smaller Get Quote pill on mobile so it fits beside the logo + hamburger */
+  .nav-right .btn-primary { padding: .5rem .9rem; font-size: .8rem; gap: .35rem; }
 
   /* hamburger centered in the header */
   .nav-toggle {
@@ -1944,6 +2089,25 @@ body.modal-open { overflow: hidden; }
   }
   .nav-links a:hover { background: rgba(20, 24, 31, .05); }
 
+  /* dropdowns render inline (indented) inside the open hamburger menu */
+  .nav-links .has-dropdown > a::after { display: none; }
+  .nav-dropdown {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    min-width: 0;
+    margin: 0 0 .2rem .6rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .nav-dropdown::before { display: none; }
+  .nav-dropdown a { padding: .55rem 1rem; font-size: .88rem; opacity: .8; }
+
   /* stack widget fields vertically */
   .quote-fields { grid-template-columns: 1fr; }
 
@@ -1979,6 +2143,12 @@ body.modal-open { overflow: hidden; }
 
   .final-form { grid-template-columns: 1fr; }
   .footer-cols { grid-template-columns: 1fr; }
+
+  /* center the entire guarantee card on mobile — heading, paragraph, checklist
+     (as a group, checkmarks kept with the text), plus the badge & button */
+  .guarantee { justify-items: center; }
+  .guarantee-body { text-align: center; }
+  .guarantee-body ul { display: inline-grid; text-align: left; }
 
   /* one pricing card at a time */
   .pricing-grid { grid-template-columns: 1fr; }

@@ -153,15 +153,20 @@
     track.innerHTML += track.innerHTML;
   });
 
-  /* ---- Background photo ends at the middle of the services widget ---- */
+  /* ---- Background photo ends partway down the hero ----
+     Homepage: mid-services-widget. Subpages: bottom of the hero so the
+     fixed-height layer never overhangs the footer (leaving empty space). */
   var pageBg = document.querySelector(".page-bg");
-  var quoteWidget = document.querySelector(".quote-widget");
+  var bgAnchor = document.querySelector(".quote-widget")
+    || document.querySelector("main > .section")   /* pricing page: first section */
+    || document.querySelector(".subpage-hero");
   function sizePageBg() {
-    if (!pageBg || !quoteWidget) return;
-    var top = quoteWidget.getBoundingClientRect().top + window.pageYOffset;
-    pageBg.style.height = Math.round(top + quoteWidget.offsetHeight * 0.5) + "px";
+    if (!pageBg || !bgAnchor) return;
+    var top = bgAnchor.getBoundingClientRect().top + window.pageYOffset;
+    var fraction = bgAnchor.classList.contains("quote-widget") ? 0.5 : 1;
+    pageBg.style.height = Math.round(top + bgAnchor.offsetHeight * fraction) + "px";
   }
-  if (pageBg && quoteWidget) {
+  if (pageBg && bgAnchor) {
     sizePageBg();
     window.addEventListener("load", sizePageBg);
     window.addEventListener("resize", sizePageBg);
@@ -224,7 +229,7 @@
   Array.prototype.slice.call(document.querySelectorAll("form[data-quote]")).forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      window.location.href = "pages/thank-you.html";
+      window.location.href = "thank-you.html";
     });
   });
 
