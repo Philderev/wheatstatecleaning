@@ -213,6 +213,83 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
 .legal a:hover { text-decoration: underline; }
 .legal-back { margin-top: 2.4rem; }
 
+/* careers content page */
+.career-page { max-width: 980px; margin: 0 auto; }
+.career-page h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin: .3rem 0 .3rem;
+  color: var(--navy);
+}
+.career-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+.career-copy,
+.career-apply {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-card);
+  padding: clamp(1.4rem, 3vw, 2rem);
+}
+.career-copy p {
+  margin: 0 0 1.2rem;
+  color: #3A3F46;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+.career-copy h2,
+.career-apply h2 {
+  margin: 0 0 .8rem;
+  color: var(--navy);
+  font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+  font-weight: 800;
+}
+.career-apply p {
+  margin: 0 0 1.2rem;
+  color: var(--muted);
+}
+
+/* thank-you page */
+.thank-page {
+  min-height: 52vh;
+  display: grid;
+  place-items: center;
+}
+.thank-card {
+  width: min(100%, 760px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  padding: clamp(2rem, 5vw, 3.4rem);
+  text-align: center;
+}
+.thank-card h1 {
+  margin: 0 0 .55rem;
+  color: var(--navy);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+.thank-card p {
+  max-width: 54ch;
+  margin: 0 auto 1.6rem;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.65;
+}
+.thank-actions {
+  display: flex;
+  justify-content: center;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+
 /* ============================================================
    TOP ANNOUNCEMENT BAR
    ============================================================ */
@@ -1283,26 +1360,130 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
 /* ============================================================
    SERVICE AREAS
    ============================================================ */
-.areas-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-.area-link {
+.coverage-widget {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  box-shadow: var(--shadow-card);
-  padding: 1.2rem 1.4rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: transform .15s ease, border-color .2s ease;
+  box-shadow: var(--shadow-pop);
+  padding: 0 clamp(18px, 2.5vw, 30px) clamp(28px, 3vw, 38px);
+  width: 100%;
 }
-.area-link:hover { transform: translateY(-3px); border-color: var(--ink); }
-.area-link .arw { color: var(--green); }
-.areas-more { margin-top: 1.2rem; }
+.coverage-tabs {
+  display: flex;
+  gap: .4rem;
+  transform: translateY(-1px);
+  padding-top: 0;
+  margin-bottom: clamp(20px, 2.5vw, 30px);
+}
+.coverage-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 48px;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  background: var(--navy);
+  color: #fff;
+  padding: .8rem 1.15rem;
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+  font-weight: 700;
+  font-size: .85rem;
+  margin-top: -16px;
+  transition: background .2s ease, color .2s ease, transform .15s ease;
+}
+.coverage-tab svg { width: 16px; height: 16px; }
+.coverage-tab:hover {
+  background: var(--green);
+  color: var(--navy);
+  transform: translateY(-2px);
+}
+.coverage-tab.is-active {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 -6px 18px rgba(20,24,31,.06);
+}
+.coverage-tab.is-active .tab-ico { color: var(--green); }
+.coverage-panels {
+  position: relative;
+}
+.coverage-panel[hidden] { display: none; }
+.coverage-body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  min-height: 390px;
+}
+.coverage-body > div:first-child {
+  max-width: 680px;
+}
+.coverage-body h3 {
+  margin: 0 0 .45rem;
+  color: var(--navy);
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+.coverage-body h4 {
+  margin: 1.2rem 0 .7rem;
+  color: var(--navy);
+  font-size: 1rem;
+  font-weight: 800;
+}
+.coverage-copy {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: .96rem;
+  line-height: 1.65;
+}
+.coverage-features {
+  margin-top: 1rem;
+}
+.coverage-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 1.4rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.coverage-trust span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .35rem;
+  color: var(--muted);
+  font-size: .84rem;
+  font-weight: 700;
+}
+.coverage-trust strong {
+  color: var(--navy);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.coverage-cta {
+  flex: 0 0 min(360px, 100%);
+  padding: clamp(1.2rem, 2vw, 1.6rem);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: linear-gradient(180deg, rgba(98, 199, 227, .12), rgba(255, 255, 255, .92));
+}
+.coverage-cta h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+.coverage-cta p {
+  margin: .45rem 0 1.2rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+.coverage-cta .btn {
+  margin: .45rem .45rem 0 0;
+}
 
 /* ============================================================
    CAREERS
@@ -1515,10 +1696,16 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .pricing-grid,
   .services-grid,
-  .reviews-grid,
-  .areas-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
   .process-grid { grid-template-columns: repeat(2, 1fr); }
   .videos { grid-template-columns: repeat(2, 1fr); }
+  .coverage-body {
+    align-items: stretch;
+    flex-direction: column;
+    min-height: 620px;
+  }
+  .coverage-cta { flex-basis: auto; }
+  .career-layout { grid-template-columns: 1fr; }
   .guarantee,
   .careers { grid-template-columns: 1fr; }
   .guarantee { justify-items: start; }
@@ -1573,7 +1760,8 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
   .quote-fields { grid-template-columns: 1fr; }
 
   /* tabs become a centered, wrapping segmented control */
-  .quote-tabs {
+  .quote-tabs,
+  .coverage-tabs {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1584,9 +1772,11 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
     margin: -20px -6px 1.4rem;
     transform: none;
   }
-  .quote-tab {
+  .quote-tab,
+  .coverage-tab {
     flex: 0 1 auto;
     margin-top: 0;
+    min-height: 42px;
     border: none;
     border-radius: calc(var(--r-sm) - 3px);
     justify-content: center;
@@ -1594,6 +1784,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
     font-size: .78rem;
   }
   .quote-tab[aria-selected="true"] { box-shadow: none; }
+  .coverage-tab.is-active { box-shadow: none; }
 
   .quote-cta { align-self: stretch; }
   .quote-foot { justify-content: flex-start; }
@@ -1613,7 +1804,6 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
   .pricing-grid,
   .services-grid,
   .reviews-grid,
-  .areas-grid,
   .process-grid,
   .videos { grid-template-columns: 1fr; }
 }

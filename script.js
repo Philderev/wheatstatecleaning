@@ -22,6 +22,22 @@
     });
   }
 
+  function slugify(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  function scrollToSection(selector) {
+    var target = document.querySelector(selector);
+    if (!target) return;
+    window.setTimeout(function () {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  }
+
   tabs.forEach(function (tab, i) {
     tab.addEventListener("click", function () { selectTab(tab); });
     tab.addEventListener("keydown", function (e) {
@@ -33,6 +49,104 @@
       selectTab(next);
     });
   });
+
+  function lockPanelHeights(containerSelector, panelSelector) {
+    var container = document.querySelector(containerSelector);
+    var lockPanels = Array.prototype.slice.call(document.querySelectorAll(panelSelector));
+    if (!container || !lockPanels.length) return;
+
+    container.style.minHeight = "";
+    var maxHeight = 0;
+    lockPanels.forEach(function (panel) {
+      var wasHidden = panel.hidden;
+      var previousVisibility = panel.style.visibility;
+      var previousPosition = panel.style.position;
+      var previousPointerEvents = panel.style.pointerEvents;
+      var previousWidth = panel.style.width;
+
+      panel.hidden = false;
+      panel.style.visibility = "hidden";
+      panel.style.position = "absolute";
+      panel.style.pointerEvents = "none";
+      panel.style.width = container.clientWidth + "px";
+      maxHeight = Math.max(maxHeight, panel.offsetHeight);
+
+      panel.hidden = wasHidden;
+      panel.style.visibility = previousVisibility;
+      panel.style.position = previousPosition;
+      panel.style.pointerEvents = previousPointerEvents;
+      panel.style.width = previousWidth;
+    });
+    container.style.minHeight = maxHeight + "px";
+  }
+
+  function lockAllTabbedPanelHeights() {
+    lockPanelHeights(".quote-panels", ".quote-panel");
+    lockPanelHeights(".coverage-panels", ".coverage-panel");
+  }
+
+  /* ---- Coverage city tabs ---- */
+  var coverageTabs = Array.prototype.slice.call(document.querySelectorAll(".coverage-tab"));
+  var coveragePanels = Array.prototype.slice.call(document.querySelectorAll(".coverage-panel"));
+
+  function selectCoverageTab(tab) {
+    var area = tab.dataset.area || tab.textContent.trim();
+    coverageTabs.forEach(function (t) {
+      var active = t === tab;
+      t.classList.toggle("is-active", active);
+      t.setAttribute("aria-selected", active ? "true" : "false");
+      t.tabIndex = active ? 0 : -1;
+    });
+    coveragePanels.forEach(function (panel) {
+      panel.hidden = panel.dataset.area !== area;
+    });
+  }
+
+  function openTabFromHash() {
+    var hash = window.location.hash.replace(/^#/, "");
+    if (!hash) return;
+
+    if (hash.indexOf("quote-") === 0) {
+      var serviceSlug = hash.replace("quote-", "");
+      var serviceTab = tabs.find(function (tab) {
+        return slugify(tab.dataset.service || tab.textContent) === serviceSlug;
+      });
+      if (serviceTab) {
+        selectTab(serviceTab);
+        scrollToSection("#quote");
+      }
+      return;
+    }
+
+    if (hash.indexOf("areas-") === 0) {
+      var areaSlug = hash.replace("areas-", "");
+      var areaTab = coverageTabs.find(function (tab) {
+        return slugify(tab.dataset.area || tab.textContent) === areaSlug;
+      });
+      if (areaTab) {
+        selectCoverageTab(areaTab);
+        scrollToSection("#areas");
+      }
+    }
+  }
+
+  coverageTabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () { selectCoverageTab(tab); });
+    tab.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      var dir = e.key === "ArrowRight" ? 1 : -1;
+      var next = coverageTabs[(i + dir + coverageTabs.length) % coverageTabs.length];
+      next.focus();
+      selectCoverageTab(next);
+    });
+  });
+
+  lockAllTabbedPanelHeights();
+  window.addEventListener("load", lockAllTabbedPanelHeights);
+  window.addEventListener("resize", lockAllTabbedPanelHeights);
+  openTabFromHash();
+  window.addEventListener("hashchange", openTabFromHash);
 
   /* ---- Reviews: duplicate each row's cards for a seamless loop ---- */
   Array.prototype.slice.call(document.querySelectorAll(".reviews-track")).forEach(function (track) {
@@ -110,13 +224,7 @@
   Array.prototype.slice.call(document.querySelectorAll("form[data-quote]")).forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var btn = form.querySelector("button[type=submit]");
-      if (btn) {
-        var label = btn.querySelector(".label") || btn;
-        var original = label.textContent;
-        label.textContent = "Thanks — we'll call you shortly";
-        setTimeout(function () { label.textContent = original; }, 3500);
-      }
+      window.location.href = "pages/thank-you.html";
     });
   });
 })();
