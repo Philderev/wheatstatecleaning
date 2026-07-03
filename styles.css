@@ -217,8 +217,8 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
    TOP ANNOUNCEMENT BAR
    ============================================================ */
 .announce {
-  background: none;              /* no background — sits on the page canvas */
-  color: var(--ink);            /* black text */
+  background: var(--navy);
+  color: #fff;
   text-align: center;
   padding: .7rem 1rem;
   font-size: .85rem;
@@ -233,8 +233,18 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
   flex-wrap: wrap;
 }
 .announce .sep { opacity: .35; font-weight: 400; }
-.announce a { color: var(--ink); }
+.announce a {
+  color: var(--cyan);
+  animation: announceCtaColor 2.4s ease-in-out infinite;
+}
 .announce a:hover { text-decoration: underline; }
+@keyframes announceCtaColor {
+  0%, 100% { color: var(--cyan); }
+  50% { color: var(--green); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .announce a { animation: none; }
+}
 
 /* ============================================================
    FRAMED CANVAS
