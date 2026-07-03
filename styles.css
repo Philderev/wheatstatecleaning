@@ -777,9 +777,9 @@ body.modal-open { overflow: hidden; }
 .hero-badges {
   margin-top: .5rem;
   display: flex;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  gap: .5rem;
+  align-items: flex-start;
   font-size: .82rem;
   color: var(--muted);
   font-weight: 600;
@@ -788,6 +788,13 @@ body.modal-open { overflow: hidden; }
   display: inline-flex;
   align-items: center;
   gap: .45rem;
+}
+.hero-badges .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  flex: none;
 }
 
 /* ============================================================
