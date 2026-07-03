@@ -269,10 +269,10 @@
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
 
-    // any same-page "quote" CTA (not tel: calls) opens the modal
+    // any same-page "quote" CTA (not tel: calls, not the nav menu links) opens the modal
     document.addEventListener("click", function (e) {
       var trigger = e.target.closest('a[href="#quote"], .quote-cta, [data-quote-modal]');
-      if (trigger) {
+      if (trigger && !trigger.closest(".nav-links")) {
         e.preventDefault();
         openQuoteModal();
         return;
