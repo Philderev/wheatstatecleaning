@@ -214,6 +214,8 @@
     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
     iframe.setAttribute("frameborder", "0");
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    // Let clicks pass through the muted preview to the thumb's play handler.
+    iframe.style.pointerEvents = "none";
     thumb.appendChild(iframe);
   }
   function stopPreview(thumb) {
