@@ -1481,6 +1481,11 @@ body.modal-open { overflow: hidden; }
   cursor: pointer;
   display: block;
   width: 100%;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.video-thumb:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-pop);
 }
 .video-thumb img,
 .video-thumb iframe {
