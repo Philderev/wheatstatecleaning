@@ -649,9 +649,9 @@ body.modal-open { overflow: hidden; }
   font-size: .92rem;
   color: var(--ink);
   opacity: .82;
-  transition: opacity .2s ease;
+  transition: opacity .2s ease, color .2s ease;
 }
-.nav-links a:hover { opacity: 1; }
+.nav-links a:hover { opacity: 1; color: var(--cyan); }
 
 /* nav dropdowns (Services / Service Areas) */
 .nav-links .has-dropdown { position: relative; }
@@ -709,7 +709,7 @@ body.modal-open { overflow: hidden; }
   opacity: .85;
   white-space: nowrap;
 }
-.nav-dropdown a:hover { opacity: 1; background: rgba(20, 24, 31, .05); }
+.nav-dropdown a:hover { opacity: 1; color: var(--cyan); background: rgba(98, 199, 227, .12); }
 
 /* hamburger toggle — hidden on desktop */
 .nav-toggle {
@@ -748,7 +748,10 @@ body.modal-open { overflow: hidden; }
   display: inline-flex;
   align-items: center;
   gap: .4rem;
+  color: var(--ink);
+  transition: color .2s ease;
 }
+.nav-phone:hover { color: var(--cyan); }
 
 /* two-column hero layout */
 .hero-grid {
@@ -2105,7 +2108,7 @@ body.modal-open { overflow: hidden; }
     border-radius: 12px;
     opacity: 1;
   }
-  .nav-links a:hover { background: rgba(20, 24, 31, .05); }
+  .nav-links a:hover { color: var(--cyan); background: rgba(98, 199, 227, .12); }
 
   /* dropdowns render inline (indented) inside the open hamburger menu */
   .nav-links .has-dropdown > a::after { display: none; }
