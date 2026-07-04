@@ -2066,6 +2066,8 @@ body.modal-open { overflow: hidden; }
 
 @media (max-width: 720px) {
   .frame { margin: 12px; border-radius: 22px; }
+  /* stack review videos one per row on mobile */
+  .videos { grid-template-columns: 1fr; max-width: 340px; margin-inline: auto; }
   .hero {
     border-radius: 22px 22px 0 0;
     min-height: 560px;
@@ -2189,17 +2191,6 @@ body.modal-open { overflow: hidden; }
   .services-grid,
   .reviews-grid,
   .process-grid { grid-template-columns: 1fr; }
-  .videos { grid-template-columns: repeat(4, 1fr); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; scroll-behavior: auto !important; }
-}
-  .videos { grid-template-columns: repeat(4, 1fr); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; scroll-behavior: auto !important; }
 }
 
 /* ---- Cookie consent banner ---- */
