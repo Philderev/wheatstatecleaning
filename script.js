@@ -294,13 +294,22 @@
   /* ---- Cookie consent banner ---- */
   (function () {
     if (document.cookie.indexOf("cookieConsent=") !== -1) return;
+    // Build a path to the cookie policy that works from any folder depth,
+    // including when the site is served from a GitHub Pages project subpath.
+    var dir = location.pathname.slice(0, location.pathname.lastIndexOf("/") + 1);
+    var base = location.hostname.endsWith("github.io")
+      ? "/" + location.pathname.split("/")[1] + "/"
+      : "/";
+    var depth = dir.slice(base.length).split("/").filter(Boolean).length;
+    var cookiePolicyHref =
+      new Array(depth + 1).join("../") + "legal/cookie-policy.html";
     var banner = document.createElement("div");
     banner.className = "cookie-banner";
     banner.setAttribute("role", "dialog");
     banner.setAttribute("aria-label", "Cookie notice");
     banner.innerHTML =
       '<p class="cookie-banner__text">We use cookies to improve your experience. ' +
-      '<a href="/legal/cookie-policy">Learn more</a>.</p>' +
+      '<a href="' + cookiePolicyHref + '">Learn more</a>.</p>' +
       '<button class="cookie-banner__btn" type="button">Got it</button>';
     banner.querySelector("button").addEventListener("click", function () {
       document.cookie = "cookieConsent=1; path=/; max-age=31536000";
