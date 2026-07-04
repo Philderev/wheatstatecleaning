@@ -235,6 +235,9 @@
 
   /* ---- Scroll reveal: sections fade + rise as they enter view ---- */
   var revealEls = document.querySelectorAll(".frame > section, .frame > .quote-wrap, .frame > footer");
+  function revealAll() {
+    Array.prototype.forEach.call(revealEls, function (el) { el.classList.add("is-visible"); });
+  }
   if ("IntersectionObserver" in window && revealEls.length) {
     var revealObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -245,8 +248,13 @@
       });
     }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
     Array.prototype.forEach.call(revealEls, function (el) { revealObs.observe(el); });
+    // Failsafe: if the observer never delivers (some browsers/extensions block
+    // callbacks), the page must not stay blank — force everything visible.
+    window.addEventListener("load", function () {
+      setTimeout(revealAll, 1200);
+    });
   } else {
-    Array.prototype.forEach.call(revealEls, function (el) { el.classList.add("is-visible"); });
+    revealAll();
   }
 
   /* ---- Quote popup modal: opened by any non-call CTA ---- */
