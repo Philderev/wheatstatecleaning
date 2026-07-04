@@ -2043,7 +2043,7 @@ body.modal-open { overflow: hidden; }
   .services-grid,
   .reviews-grid { grid-template-columns: repeat(2, 1fr); }
   .process-grid { grid-template-columns: repeat(2, 1fr); }
-  .videos { grid-template-columns: repeat(2, 1fr); }
+  .videos { grid-template-columns: repeat(4, 1fr); }
   .coverage-body {
     align-items: stretch;
     flex-direction: column;
@@ -2183,14 +2183,14 @@ body.modal-open { overflow: hidden; }
   .pricing-grid,
   .services-grid,
   .reviews-grid,
-  .process-grid,
-  .videos { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .videos { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }
 }
-  .videos { grid-template-columns: 1fr; }
+  .videos { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -205,10 +205,38 @@
     thumb.removeAttribute("role");
     thumb.removeAttribute("tabindex");
   }
+  function previewVideo(thumb) {
+    var id = thumb.dataset.video;
+    if (!id || thumb.dataset.clicked || thumb.querySelector("iframe")) return;
+    var iframe = document.createElement("iframe");
+    iframe.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&controls=0&rel=0&playsinline=1";
+    iframe.title = thumb.getAttribute("aria-label") || "Video review";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.setAttribute("frameborder", "0");
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    thumb.appendChild(iframe);
+  }
+  function stopPreview(thumb) {
+    if (thumb.dataset.clicked) return;
+    var iframe = thumb.querySelector("iframe");
+    if (iframe) iframe.remove();
+  }
   Array.prototype.slice.call(document.querySelectorAll(".video-thumb[data-video]")).forEach(function (thumb) {
-    thumb.addEventListener("click", function () { playVideo(thumb); });
+    var original = thumb.innerHTML;
+    thumb.addEventListener("mouseenter", function () { previewVideo(thumb); });
+    thumb.addEventListener("mouseleave", function () { stopPreview(thumb); });
+    thumb.addEventListener("click", function () {
+      thumb.dataset.clicked = "1";
+      thumb.innerHTML = original;
+      playVideo(thumb);
+    });
     thumb.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playVideo(thumb); }
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        thumb.dataset.clicked = "1";
+        thumb.innerHTML = original;
+        playVideo(thumb);
+      }
     });
   });
 
