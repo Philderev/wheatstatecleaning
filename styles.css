@@ -1485,7 +1485,7 @@ body.modal-open { overflow: hidden; }
 }
 .video-thumb:hover {
   transform: scale(1.03);
-  box-shadow: 0 20px 50px rgba(20, 24, 31, .55);
+  box-shadow: 0 12px 24px rgba(20, 24, 31, .55);
 }
 .video-thumb img,
 .video-thumb iframe {
