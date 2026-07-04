@@ -312,9 +312,10 @@
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
 
-    // any same-page "quote" CTA (not tel: calls, not the nav menu links) opens the modal
+    // any "quote" CTA (not tel: calls, not the nav menu links) opens the modal —
+    // matches #quote on the homepage and ../index.html#quote / index.html#quote on subpages
     document.addEventListener("click", function (e) {
-      var trigger = e.target.closest('a[href="#quote"], .quote-cta, [data-quote-modal]');
+      var trigger = e.target.closest('a[href$="#quote"], .quote-cta, [data-quote-modal]');
       if (trigger && !trigger.closest(".nav-links")) {
         e.preventDefault();
         openQuoteModal();
