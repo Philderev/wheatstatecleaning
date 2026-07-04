@@ -616,7 +616,7 @@ body.modal-open { overflow: hidden; }
 .nav .brand { display: inline-flex; align-items: center; gap: .6rem; }
 /* larger logo that overflows the bar via negative margins,
    so the nav's own height stays the same */
-.nav .brand img { height: 84px; width: auto; display: block; margin: -16px 0 -28px; }
+.nav .brand img { height: 60px; width: auto; display: block; margin: 0; }
 .brand-name { font-weight: 800; font-size: 1.1rem; letter-spacing: -.02em; color: var(--ink); }
 
 .nav-links {
