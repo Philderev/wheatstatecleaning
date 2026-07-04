@@ -321,11 +321,14 @@ h1, h2, h3, h4, h5, h6 { color: var(--navy); }
   from { opacity: 0; transform: translateY(12px) scale(.98); }
   to   { opacity: 1; transform: none; }
 }
-/* clipping frame + zoomed-out (0.8) form so the whole thing fits, no scrollbar */
+/* zoomed-out (0.8) form frame; scrolls vertically so the submit button is
+   always reachable, while the 125%-wide iframe stays clipped horizontally */
 .quote-modal__frame {
-  overflow: hidden;
-  height: 525px;
-  max-height: 94vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 700px;
+  max-height: 90vh;
   border-radius: 16px;
 }
 .quote-modal__frame iframe {
