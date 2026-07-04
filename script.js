@@ -229,7 +229,7 @@
   Array.prototype.slice.call(document.querySelectorAll("form[data-quote]")).forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      window.location.href = "thank-you.html";
+      window.location.href = "thank-you";
     });
   });
 
@@ -300,7 +300,7 @@
     banner.setAttribute("aria-label", "Cookie notice");
     banner.innerHTML =
       '<p class="cookie-banner__text">We use cookies to improve your experience. ' +
-      '<a href="/legal/cookie-policy.html">Learn more</a>.</p>' +
+      '<a href="/legal/cookie-policy">Learn more</a>.</p>' +
       '<button class="cookie-banner__btn" type="button">Got it</button>';
     banner.querySelector("button").addEventListener("click", function () {
       document.cookie = "cookieConsent=1; path=/; max-age=31536000";
