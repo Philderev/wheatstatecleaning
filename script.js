@@ -290,4 +290,22 @@
       if (e.key === "Escape" && quoteModal.classList.contains("is-open")) closeQuoteModal();
     });
   }
+
+  /* ---- Cookie consent banner ---- */
+  (function () {
+    if (document.cookie.indexOf("cookieConsent=") !== -1) return;
+    var banner = document.createElement("div");
+    banner.className = "cookie-banner";
+    banner.setAttribute("role", "dialog");
+    banner.setAttribute("aria-label", "Cookie notice");
+    banner.innerHTML =
+      '<p class="cookie-banner__text">We use cookies to improve your experience. ' +
+      '<a href="/legal/cookie-policy.html">Learn more</a>.</p>' +
+      '<button class="cookie-banner__btn" type="button">Got it</button>';
+    banner.querySelector("button").addEventListener("click", function () {
+      document.cookie = "cookieConsent=1; path=/; max-age=31536000";
+      banner.remove();
+    });
+    document.body.appendChild(banner);
+  })();
 })();
