@@ -1243,11 +1243,19 @@ body.modal-open { overflow: hidden; }
   color: var(--muted-2);
 }
 .price-card .plan { font-size: 1.35rem; font-weight: 800; margin: .3rem 0 0; letter-spacing: -.01em; }
+.price-card .price-prefix {
+  display: block;
+  margin: 1rem 0 -.35rem;
+  font-size: .95rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: var(--navy);
+}
 .price-card .price {
   font-size: clamp(2rem, 3.4vw, 2.7rem);
   font-weight: 800;
   letter-spacing: -.03em;
-  margin: 1rem 0 .1rem;
+  margin: .35rem 0 .1rem;
 }
 .price-card .price::after {
   content: "/visit";
